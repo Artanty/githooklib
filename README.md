@@ -1,3 +1,21 @@
+# What is it?
+It is a small library that overrides git hooks folder on: 
+```
+{urProject}\build\node_modules\githooklib\hooks
+```
+and provides following 
+## git hooks:
+
+### pre-commit
+
+bump version based on back & web package.jsons
+and save it to TAG_VERSION variable in build/.env file
+
+### post-commit
+
+push tag with TAG_VERSION from build/.env file
+if commit contains "-d"
+
 # Installation
 1. make sure the project has web & back folders.
 2. prepare /build folder in project
@@ -16,7 +34,7 @@ logs
 ```
 4. add .env file to build folder:
 
-final project structure:
+### Final project structure:
 ```
 your-project/
 ├── build/
@@ -27,29 +45,17 @@ your-project/
 └── web
 ```
 
-# pre-commit
-
-bump version based on back & web package.jsons
-and save it to TAG_VERSION variable in build/.env file
-
-# post-commit
-
- push tag with TAG_VERSION from build/.env file
- if commit contains "-d"
-
-
-# Verify configuration after installing package:
+### Verify configuration after installing package:
 git config --get core.hooksPath
 
-# Reverting Changes, switch back to default hooks:
+### Reverting Changes, switch back to default hooks:
 git config --unset core.hooksPath
 
 
 
 # Plans (doesnt wok now):
 
-### Manually provide folders (if not web & back)
-in .env file:
+1. Manually provide folders (if not web & back) in .env file:
 ```
 VBH_WEB_PATH
 VBH_WEB_FOLDER
