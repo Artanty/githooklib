@@ -3,23 +3,21 @@ const fs = require('fs');
 const path = require('path');
 
 const HOOKS = {
-  'pre-commit': 'pre-commit_version-bump',
-  'post-commit': 'post-commit_tag-push'
+  'pre-commit': 'version-bump-hook',
+  'post-commit': 'tag-deploy-hook'
 };
 
-function findGitDir(currentDir) {
-  // Check current directory
-  let gitDir = path.join(currentDir, '.git');
-  if (fs.existsSync(gitDir)) {
-    return gitDir;
-  }
+function findGitDir(startDir) {
+  let currentDir = path.resolve(startDir);
+  const root = path.parse(currentDir).root;
 
-  // Check parent directory
-  gitDir = path.join(currentDir, '../.git');
-  if (fs.existsSync(gitDir)) {
-    return gitDir;
+  while (currentDir !== root) {
+    const gitDir = path.join(currentDir, '.git');
+    if (fs.existsSync(gitDir)) {
+      return gitDir;
+    }
+    currentDir = path.dirname(currentDir);
   }
-
   return null;
 }
 
@@ -28,12 +26,13 @@ function installHooks() {
     const gitDir = findGitDir(process.cwd());
     
     if (!gitDir) {
-      throw new Error('Could not find .git directory in current or parent folder');
+      console.warn('⚠️  No .git directory found - skipping hook installation');
+      return;
     }
 
     const hooksDir = path.join(gitDir, 'hooks');
     if (!fs.existsSync(hooksDir)) {
-      fs.mkdirSync(hooksDir);
+      fs.mkdirSync(hooksDir, { recursive: true });
     }
 
     Object.entries(HOOKS).forEach(([hookName, command]) => {
@@ -43,11 +42,11 @@ ${command}
 `;
       fs.writeFileSync(hookPath, hookContent);
       fs.chmodSync(hookPath, '755');
-      console.log(`✅ ${hookName} hook installed successfully in ${gitDir}/hooks`);
+      console.log(`✅ Installed ${hookName} hook in ${hooksDir}`);
     });
 
   } catch (error) {
-    console.error('❌ Error installing hooks:', error.message);
+    console.error('❌ Hook installation failed:', error.message);
     process.exit(1);
   }
 }
