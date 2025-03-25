@@ -1,0 +1,30 @@
+{
+    "name": "githooklib",
+    "version": "1.1.1",
+    "description": "Git hooks for version bumping and tag deployment",
+    "bin": {
+        "version-bump-hook": "./bin/pre-commit_version-bump.js",
+        "tag-push-hook": "./bin/post-commit_tag-push.js",
+        "install-version-hooks": "./bin/setup-hooks.js"
+    },
+    "scripts": {
+        "postinstall": "install-version-hooks"
+    },
+    "files": [
+        "bin",
+        "lib"
+    ],
+    "keywords": [
+        "git",
+        "hooks",
+        "version",
+        "pre-commit",
+        "post-commit",
+        "tagging"
+    ],
+    "author": "Artyom Antoshkin",
+    "license": "MIT",
+    "dependencies": {
+        "simple-git": "^3.0.0"
+    }
+}
