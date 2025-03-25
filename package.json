@@ -2,16 +2,12 @@
     "name": "githooklib",
     "version": "1.1.2",
     "description": "Git hooks for version bumping and tag deployment",
-    "bin": {
-        "version-bump-hook": "./bin/pre-commit_version-bump.js",
-        "tag-push-hook": "./bin/post-commit_tag-push.js",
-        "install-version-hooks": "./bin/setup-hooks.js"
-    },
     "scripts": {
-        "postinstall": "install-version-hooks"
+        "postinstall": "node setup-hooks.js",
+        "postuninstall": "git config --unset core.hooksPath || true"
     },
     "files": [
-        "bin",
+        "hooks",
         "lib"
     ],
     "keywords": [

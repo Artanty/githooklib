@@ -4,6 +4,11 @@ const { execSync } = require('child_process');
 const LogManager = require('../lib/log-manager');
 const VersionManager = require('../lib/version-utils');
 
+/**
+ * bump version based on back & web package.jsons
+ * and save it to TAG_VERSION variable in build/.env file
+ */
+
 // Configuration - can be overridden by environment variables
 const config = {
   logDir: process.env.VBH_LOG_DIR || path.join(process.cwd(), 'build/logs'),

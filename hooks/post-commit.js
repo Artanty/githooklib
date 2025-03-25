@@ -2,6 +2,11 @@
 const TagManager = require('../lib/tag-utils');
 const LogManager = require('../lib/log-manager');
 
+/**
+ * push tag with TAG_VERSION from build/.env file
+ * if commit contains "-d"
+ */
+
 const config = {
   logDir: process.env.VBH_LOG_DIR || path.join(process.cwd(), 'build/logs'),
   envFile: process.env.VBH_ENV_FILE || path.join(process.cwd(), 'build/.env'),
