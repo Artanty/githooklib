@@ -1,6 +1,6 @@
 {
     "name": "githooklib",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Git hooks for version bumping and tag deployment",
     "bin": {
         "version-bump-hook": "./bin/pre-commit_version-bump.js",
