@@ -1,6 +1,6 @@
 {
     "name": "githooklib",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "description": "Git hooks for version bumping and tag deployment",
     "scripts": {
         "postinstall": "node setup-hooks.js",
