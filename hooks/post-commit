@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const { execSync } = require('child_process');
 const path = require('path');
 const TagManager = require('../lib/tag-utils');
 const LogManager = require('../lib/log-manager');
