@@ -6,6 +6,8 @@ const LogManager = require('../lib/log-manager');
 /**
  * push tag with TAG_VERSION from build/.env file
  * if commit contains "-d"
+ * 
+ * push staged commits to current branch
  */
 
 const config = {
@@ -22,13 +24,14 @@ try {
 
   if (TagManager.isDeploymentCommit()) {
     logManager.debug('Deployment flag (-d) found');
-    TagManager.verifyMainBranch();
+    const currentBranch = TagManager.verifyMainBranch();
     
     const tagName = tagManager.createAndPushTag();
     console.log(`✅ Successfully deployed tag: ${tagName}`);
     
     try {
       execSync('git push origin HEAD', { stdio: 'inherit' });
+      logManager.debug(`Staged commits pushed to current branch: ${currentBranch}`);
     } catch (pushError) {
       logManager.debug('Commit was already pushed or push failed');
       logManager.debug(`Catched error: ${pushError}`);
