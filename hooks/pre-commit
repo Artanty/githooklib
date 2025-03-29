@@ -23,7 +23,8 @@ const config = {
       path: process.env.VBH_BACK_PATH || path.join(process.cwd(), 'back/package.json'),
       folder: process.env.VBH_BACK_FOLDER || 'back/'
     }
-  }
+  },
+  clearTagDebugLogFile: true
 };
 
 // Initialize shared modules

@@ -53,7 +53,7 @@ git config --unset core.hooksPath
 
 
 
-# Plans (doesnt wok now):
+# Plans (doesnt work now):
 
 1. Manually provide folders (if not web & back) in .env file:
 ```

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const path = require('path');
 const TagManager = require('../lib/tag-utils');
 const LogManager = require('../lib/log-manager');
 
@@ -30,6 +31,7 @@ try {
       execSync('git push origin HEAD', { stdio: 'inherit' });
     } catch (pushError) {
       logManager.debug('Commit was already pushed or push failed');
+      logManager.debug(`Catched error: ${pushError}`);
     }
   }
 } catch (error) {
