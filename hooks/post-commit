@@ -13,7 +13,9 @@ const LogManager = require('../lib/log-manager');
 
 const config = {
   logDir: process.env.VBH_LOG_DIR || path.join(process.cwd(), 'build/logs'),
-  envFile: process.env.VBH_ENV_FILE || path.join(process.cwd(), 'build/.env'),
+  buildEnvFile: process.env.VBH_BUILD_ENV_FILE || path.join(process.cwd(), 'build/.env'),
+  webEnvFile: process.env.VBH_WEB_ENV_FILE || path.join(process.cwd(), 'web/.env'),
+  backEnvFile: process.env.VBH_BACK_ENV_FILE || path.join(process.cwd(), 'back/.env'),
   maxEntries: process.env.VBH_MAX_ENTRIES || 500
 };
 

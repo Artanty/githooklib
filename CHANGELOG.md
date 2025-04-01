@@ -1,3 +1,8 @@
+## [1.2.7] - 2025-04-01
+### Changed
+- Changed envFile to buildEnvFile
+- Added webEnvFile & backEnvFile
+
 ## [1.2.6] - 2025-03-25
 ### Fixed
 - Fixed push staged commits after tag push: Added missed execSync import
