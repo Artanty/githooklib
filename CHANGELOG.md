@@ -1,3 +1,11 @@
+## [1.3.0] - 2026-07-26
+### Added
+- Auto-set hook file permissions (chmod +x) during postinstall
+- Auto-create .gitignore in build/ if missing
+- Auto-create .env in build/ if missing
+- Post-install verification step with console status output
+- Verify web/ and back/ folders exist — error if both missing, warn if one missing
+
 ## [1.2.7] - 2025-04-01
 ### Changed
 - Changed envFile to buildEnvFile

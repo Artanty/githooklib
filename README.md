@@ -26,13 +26,12 @@ cd build
 npm init --yes
 npm install --save-dev githooklib
 ```
-4. add .gitignore file to build folder:
-```
-node_modules
-.env
-logs
-```
-4. add .env file to build folder:
+
+The postinstall script will automatically:
+- Set `core.hooksPath` to the package's hooks directory
+- Make hook files executable (chmod +x)
+- Create `.gitignore` in build/ if it doesn't exist
+- Create `.env` in build/ if it doesn't exist
 
 ### Final project structure:
 ```
@@ -46,10 +45,14 @@ your-project/
 ```
 
 ### Verify configuration after installing package:
+```
 git config --get core.hooksPath
+```
 
 ### Reverting Changes, switch back to default hooks:
+```
 git config --unset core.hooksPath
+```
 
 
 
