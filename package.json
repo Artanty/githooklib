@@ -9,6 +9,7 @@
     "files": [
         "hooks",
         "lib",
+        "lib/tag-diff.js",
         "setup-hooks.js"
     ],
     "keywords": [
