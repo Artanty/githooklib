@@ -65,3 +65,8 @@ VBH_WEB_FOLDER
 VBH_BACK_PATH
 VBH_BACK_FOLDER
 ```
+
+notes:
+https://www.npmjs.com/package/githooklib
+npm login
+npm publish
