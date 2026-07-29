@@ -28,8 +28,7 @@ try {
     logManager.debug('Deployment flag (-d) found');
     const currentBranch = TagManager.verifyMainBranch();
     
-    const tagName = tagManager.createAndPushTag();
-    console.log(`✅ Successfully deployed tag: ${tagName}`);
+    const tagName = tagManager.createTag();
     
     try {
       execSync('git push origin HEAD', { stdio: 'inherit' });
@@ -38,6 +37,9 @@ try {
       logManager.debug('Commit was already pushed or push failed');
       logManager.debug(`Catched error: ${pushError}`);
     }
+    
+    tagManager.pushTag(tagName);
+    console.log(`✅ Successfully deployed tag: ${tagName}`);
   }
 } catch (error) {
   console.error(`❌ ${error.message}`);
